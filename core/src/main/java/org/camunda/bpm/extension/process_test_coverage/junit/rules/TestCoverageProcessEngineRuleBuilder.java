@@ -94,6 +94,26 @@ public class TestCoverageProcessEngineRuleBuilder {
     }
 
     /**
+     * Configures whenever test method coverage handling is needed.
+     * @param needHandleTestMethodCoverage boolean
+     * @return
+     */
+    public TestCoverageProcessEngineRuleBuilder handleTestMethodCoverage(boolean needHandleTestMethodCoverage) {
+        rule.setHandleTestMethodCoverage(needHandleTestMethodCoverage);
+        return this;
+    }
+
+    /**
+     * Configures whenever class coverage handling is needed.
+     * @param needHandleClassCoverage boolean
+     * @return
+     */
+    public TestCoverageProcessEngineRuleBuilder handleClassCoverage(boolean needHandleClassCoverage) {
+        rule.setHandleClassCoverage(needHandleClassCoverage);
+        return this;
+    }
+
+    /**
      * Asserts if the class coverage is greater than the passed percentage.
      * 
      * @param percentage
