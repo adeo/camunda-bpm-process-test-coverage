@@ -1,3 +1,22 @@
+# Camunda BPM Process Test Coverage(FORK)
+
+**Why:** This fork contains changes to the original repo initially required by LMRU AAO Team.
+
+**What:** [3 pull-requests](https://github.com/camunda/camunda-bpm-process-test-coverage/pulls?q=is%3Apr+author%3Aov7a) are contained in this repository: report configuraton, bugfix for percent in coverage in reports, and an ability to have a shared coverage test run state.
+
+## Summary
+
+See the original README below.
+
+## Maintainers
+
+Vlad Chesnokov < vladislav.chesnokov@leroymerlin.ru >
+
+Contact info: @vladislav_chesnokov in ADEO Slack, @vch-lm or @ov7a on github.
+
+
+# ORIGINAL README
+
 <a href="https://travis-ci.org/camunda/camunda-bpm-process-test-coverage"><img src="https://travis-ci.org/camunda/camunda-bpm-process-test-coverage.svg?branch=master"/></a> <a href="https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension/camunda-bpm-process-test-coverage"><img src="https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension/camunda-bpm-process-test-coverage/badge.svg" /></a>
 
 # <img src="/doc/img/camunda.png" width="23" height="23" />&nbsp;Camunda&nbsp;BPM&nbsp;Process&nbsp;Test&nbsp;Coverage&nbsp; 
