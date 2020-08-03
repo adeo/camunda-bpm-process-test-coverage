@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.camunda.bpm.extension</groupId>
+	<groupId>ru.leroymerlin.solution</groupId>
 	<artifactId>camunda-bpm-process-test-coverage-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>0.3.3-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>Camunda BPM Process Test Coverage - Parent</name>
 	<description>Helper library to visualize and assert which parts of a BPMN process have been covered by a unit test.</description>
@@ -114,28 +114,15 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<connection>scm:git:git@github.com:camunda/camunda-process-test-coverage.git</connection>
-		<url>scm:git:git@github.com:camunda/camunda-process-test-coverage.git</url>
-		<developerConnection>scm:git:git@github.com:camunda/camunda-process-test-coverage.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
-	<!-- repositories used for distribution of releases and snapshots, DO NOT 
-		CHANGE -->
 	<distributionManagement>
-		<repository>
-			<id>camunda-nexus</id>
-			<name>camunda bpm community extensions</name>
-			<url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-community-extensions</url>
-		</repository>
 		<snapshotRepository>
-			<id>camunda-nexus</id>
-			<name>camunda bpm community extensions snapshots</name>
-			<url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-community-extensions-snapshots</url>
-			<!-- for maven 2 compatibility -->
-			<uniqueVersion>true</uniqueVersion>
+			<id>snapshots</id>
+			<url>https://art.lmru.tech/mvn-local-snapshots-solution</url>
 		</snapshotRepository>
+		<repository>
+			<id>releases</id>
+			<url>https://art.lmru.tech/mvn-local-release-solution</url>
+		</repository>
 	</distributionManagement>
 
 </project>
