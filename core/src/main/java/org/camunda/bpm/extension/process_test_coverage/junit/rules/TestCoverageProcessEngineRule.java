@@ -1,16 +1,5 @@
 package org.camunda.bpm.extension.process_test_coverage.junit.rules;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.impl.bpmn.parser.BpmnParseListener;
 import org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl;
@@ -23,7 +12,6 @@ import org.camunda.bpm.extension.process_test_coverage.listeners.FlowNodeHistory
 import org.camunda.bpm.extension.process_test_coverage.listeners.PathCoverageParseListener;
 import org.camunda.bpm.extension.process_test_coverage.model.AggregatedCoverage;
 import org.camunda.bpm.extension.process_test_coverage.model.ClassCoverage;
-import org.camunda.bpm.extension.process_test_coverage.model.CoveredElement;
 import org.camunda.bpm.extension.process_test_coverage.model.MethodCoverage;
 import org.camunda.bpm.extension.process_test_coverage.util.CoverageReportUtil;
 import org.hamcrest.Matcher;
@@ -31,6 +19,11 @@ import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.runner.Description;
+
+import java.lang.reflect.Field;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Rule handling the process test coverage for individual test methods and the
@@ -76,6 +69,11 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
      *  Is class coverage handling needed?
      */
     private boolean handleClassCoverage = true;
+
+    /**
+     *  coverageTestRunStateFactory. Can be changed for aggregated/suite coverage check
+     */
+    private CoverageTestRunStateFactory coverageTestRunStateFactory = new DefaultCoverageTestRunStateFactory();
 
     /**
      * Matchers to be asserted on the class coverage percentage.
@@ -247,9 +245,7 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
         // @Rule run
         if (firstRun) {
 
-            coverageTestRunState = new CoverageTestRunState();
-            coverageTestRunState.setTestClassName(description.getClassName());
-            coverageTestRunState.setExcludedProcessDefinitionKeys(excludedProcessDefinitionKeys);
+            coverageTestRunState = coverageTestRunStateFactory.create(description.getClassName(), excludedProcessDefinitionKeys);
 
             initializeListenerRunState();
 
@@ -414,6 +410,10 @@ public class TestCoverageProcessEngineRule extends ProcessEngineRule {
 
     public void setHandleClassCoverage(boolean handleClassCoverage) {
         this.handleClassCoverage = handleClassCoverage;
+    }
+
+    public void setCoverageTestRunStateFactory(CoverageTestRunStateFactory coverageTestRunStateFactory) {
+        this.coverageTestRunStateFactory = coverageTestRunStateFactory;
     }
 
     @Override
